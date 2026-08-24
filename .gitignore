@@ -1,0 +1,3 @@
+backend/cadEngine/FreeCAD.AppImage
+backend/cadEngine/squashfs-root/
+*pycache__/
