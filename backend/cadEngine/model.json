@@ -1,0 +1,118 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "schema_version": "1.0.0",
+  "name": "Block Example",
+  "created_at": "2026-08-27T12:00:00+00:00",
+  "updated_at": "2026-08-27T12:00:00+00:00",
+  "units": "mm",
+  "users": [
+    {
+      "id": "usr_owner_01",
+      "role": "owner",
+      "active_workbench_id": "wb_model_main"
+    }
+  ],
+  "workbenches": [
+    {
+      "id": "wb_model_main",
+      "name": "Main Part Model",
+      "type": "model",
+      "created_at": "2026-08-27T12:00:00+00:00",
+      "updated_at": "2026-08-27T12:00:00+00:00",
+      "operations": [
+        {
+          "id": "op_sketch_base",
+          "name": "Base Profile Sketch",
+          "type": "sketch",
+          "plane": {
+            "target_id": "XY",
+            "target_type": "datum",
+            "element_type": "face",
+            "role": "primary"
+          },
+          "entities": [
+            {
+              "id": "pt_corner1",
+              "name": "Point 1",
+              "type": "point",
+              "x": 0.0,
+              "y": 0.0,
+              "is_construction": false
+            },
+            {
+              "id": "pt_corner2",
+              "name": "Point 2",
+              "type": "point",
+              "x": 20.0,
+              "y": 20.0,
+              "is_construction": false
+            },
+            {
+              "id": "rect_base",
+              "name": "Base Rectangle",
+              "type": "corner_rectangle",
+              "corner1_point_id": "pt_corner1",
+              "corner2_point_id": "pt_corner2",
+              "top_left_point_id": "pt_tl",
+              "top_right_point_id": "pt_tr",
+              "bottom_right_point_id": "pt_br",
+              "bottom_left_point_id": "pt_bl",
+              "line_top_id": "ln_top",
+              "line_right_id": "ln_right",
+              "line_bottom_id": "ln_bottom",
+              "line_left_id": "ln_left",
+              "is_construction": false
+            }
+          ],
+          "constraints": [
+            {
+              "id": "cst_width",
+              "name": "Rectangle Width",
+              "type": "distance",
+              "first_target": {
+                "target_id": "ln_bottom",
+                "target_type": "sketch_entity",
+                "element_type": "curve",
+                "role": "primary"
+              },
+              "value": 20.0
+            },
+            {
+              "id": "cst_height",
+              "name": "Rectangle Height",
+              "type": "distance",
+              "first_target": {
+                "target_id": "ln_left",
+                "target_type": "sketch_entity",
+                "element_type": "curve",
+                "role": "primary"
+              },
+              "value": 20.0
+            }
+          ]
+        },
+        {
+          "id": "op_extrude_base",
+          "name": "Base Pad",
+          "type": "extrude",
+          "target": {
+            "target_id": "op_sketch_base",
+            "target_type": "topology",
+            "element_type": "face",
+            "role": "primary"
+          },
+          "distance": 10.0,
+          "symmetric": false,
+          "reversed": false,
+          "mode": "add",
+          "merge_scope_type": "auto",
+          "target_body_ids": []
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "author": "Hugo",
+    "project": "CAD Engine Prototype"
+  }
+}
