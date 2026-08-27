@@ -1,0 +1,136 @@
+{
+  "id": "l-bracket-002",
+  "schema_version": "1.0.0",
+  "name": "60x20 L Bracket With Four Holes",
+  "created_at": "2026-08-27T12:00:00+00:00",
+  "updated_at": "2026-08-27T12:00:00+00:00",
+  "units": "mm",
+  "users": [],
+  "workbenches": [
+    {
+      "id": "wb_l_bracket",
+      "name": "L Bracket Model",
+      "type": "model",
+      "created_at": "2026-08-27T12:00:00+00:00",
+      "updated_at": "2026-08-27T12:00:00+00:00",
+      "operations": [
+        {
+          "id": "op_base_plate_profile",
+          "name": "60x20 Base Plate With Two Holes",
+          "type": "sketch",
+          "plane": {
+            "target_id": "XY",
+            "target_type": "datum",
+            "element_type": "face",
+            "role": "primary"
+          },
+          "entities": [
+            {"id": "base_a", "type": "point", "x": 0, "y": 0},
+            {"id": "base_b", "type": "point", "x": 60, "y": 20},
+            {
+              "id": "base_rectangle",
+              "type": "corner_rectangle",
+              "corner1_point_id": "base_a",
+              "corner2_point_id": "base_b",
+              "top_left_point_id": "base_tl",
+              "top_right_point_id": "base_tr",
+              "bottom_right_point_id": "base_br",
+              "bottom_left_point_id": "base_bl",
+              "line_top_id": "base_top",
+              "line_right_id": "base_right",
+              "line_bottom_id": "base_bottom",
+              "line_left_id": "base_left"
+            },
+            {"id": "base_hole_left", "type": "point", "x": 15, "y": 10},
+            {
+              "id": "base_hole_left_circle",
+              "type": "circle",
+              "center_point_id": "base_hole_left",
+              "diameter": 5
+            },
+            {"id": "base_hole_right", "type": "point", "x": 45, "y": 10},
+            {
+              "id": "base_hole_right_circle",
+              "type": "circle",
+              "center_point_id": "base_hole_right",
+              "diameter": 5
+            }
+          ],
+          "constraints": []
+        },
+        {
+          "id": "op_base_plate",
+          "name": "2mm Base Plate",
+          "type": "extrude",
+          "target": {"target_id": "op_base_plate_profile", "target_type": "topology", "element_type": "face", "role": "primary"},
+          "distance": 2,
+          "symmetric": false,
+          "reversed": false,
+          "mode": "new",
+          "merge_scope_type": "auto",
+          "target_body_ids": []
+        },
+        {
+          "id": "op_upright_profile",
+          "name": "60x20 Upright With Two Holes",
+          "type": "sketch",
+          "plane": {
+            "target_id": "XZ",
+            "target_type": "datum",
+            "element_type": "face",
+            "role": "primary"
+          },
+          "entities": [
+            {"id": "upright_a", "type": "point", "x": 0, "y": 0},
+            {"id": "upright_b", "type": "point", "x": 60, "y": 20},
+            {
+              "id": "upright_rectangle",
+              "type": "corner_rectangle",
+              "corner1_point_id": "upright_a",
+              "corner2_point_id": "upright_b",
+              "top_left_point_id": "upright_tl",
+              "top_right_point_id": "upright_tr",
+              "bottom_right_point_id": "upright_br",
+              "bottom_left_point_id": "upright_bl",
+              "line_top_id": "upright_top",
+              "line_right_id": "upright_right",
+              "line_bottom_id": "upright_bottom",
+              "line_left_id": "upright_left"
+            },
+            {"id": "upright_hole_left", "type": "point", "x": 15, "y": 10},
+            {
+              "id": "upright_hole_left_circle",
+              "type": "circle",
+              "center_point_id": "upright_hole_left",
+              "diameter": 5
+            },
+            {"id": "upright_hole_right", "type": "point", "x": 45, "y": 10},
+            {
+              "id": "upright_hole_right_circle",
+              "type": "circle",
+              "center_point_id": "upright_hole_right",
+              "diameter": 5
+            }
+          ],
+          "constraints": []
+        },
+        {
+          "id": "op_upright",
+          "name": "2mm Side Plate",
+          "type": "extrude",
+          "target": {"target_id": "op_upright_profile", "target_type": "topology", "element_type": "face", "role": "primary"},
+          "distance": 2,
+          "symmetric": false,
+          "reversed": false,
+          "mode": "new",
+          "merge_scope_type": "auto",
+          "target_body_ids": []
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "description": "2mm thick 60x20 base plate and 2mm thick 60x20 upright, with two 5mm holes centered across the 60mm length of each plate",
+    "author": "CloudCAD"
+  }
+}
